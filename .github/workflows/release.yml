@@ -184,14 +184,8 @@ jobs:
       - name: Prepare for distribution
         working-directory: ./openvscode-server
         run: |
-          set -e
-          base_commit_msg="code web server initial commit"
-          base_commit=$(git log --pretty="%H" --max-count=1 --grep "${base_commit_msg}")
-          if [ -z "$base_commit" ]; then
-            echo "Could not find base commit"
-            exit 1
-          fi
-          distro_commit=$(git rev-parse "${base_commit}"~)
+          set -e          
+          distro_commit="600f75cf90b140064098af71480a8de5162369b7"
           echo "distro_commit: ${distro_commit}"
 
           VSCODE_DISTRO_COMMIT="${distro_commit}" \
